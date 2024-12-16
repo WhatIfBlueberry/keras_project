@@ -26,7 +26,7 @@ import java.nio.ByteOrder;
 import java.util.Arrays;
 
 import app.dpr.dolphin.R;
-import app.dpr.dolphin.ml.ModelSmallColab;
+import app.dpr.dolphin.ml.ModelSmall50;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void classifyImage(Bitmap image){
         try {
-            ModelSmallColab model = ModelSmallColab.newInstance(getApplicationContext());
+            ModelSmall50 model = ModelSmall50.newInstance(getApplicationContext());
 
             // Creates inputs for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 64, 64, 3}, DataType.FLOAT32);
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             inputFeature0.loadBuffer(byteBuffer);
 
             // Runs model inference and gets result.
-            ModelSmallColab.Outputs outputs = model.process(inputFeature0);
+            ModelSmall50.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
