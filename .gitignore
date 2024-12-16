@@ -2,3 +2,5 @@
 data/
 data2/
 dolphin/local.properties
+dolphin/.gradle/
+dolphin/.idea/
